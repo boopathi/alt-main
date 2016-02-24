@@ -1,2 +1,2 @@
-import A from 'A';
-import B from 'B';
+var A = require('./A');
+var B = require('./B');
