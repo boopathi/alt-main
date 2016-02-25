@@ -1,3 +1,4 @@
+var B = require('../B');
 module.exports = function() {
-  return 'A';
+  return [B(), 'A'];
 }
