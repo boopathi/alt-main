@@ -1,6 +1,6 @@
 import nodePath from 'path';
 
-export default function({t: types}) {
+export default function({types: t}) {
   const requireVisitor = {
     CallExpression(path, plugin) {
       if (t.isIdentifier(path.node.callee, { name: 'require' }))
@@ -9,11 +9,11 @@ export default function({t: types}) {
   };
   const modVisitor = {
     StringLiteral(path) {
-      var req = path.node.arguments[0].value;
+      var req = path.node.value;
       var issuer = this.file.opts.filename;
 
-      // we use posix because using windows style paths in requires
-      // makes it a escape character and not a path delimiter
+      // we use posix because using windows style paths in require
+      // makes it an escape character and not a path delimiter
       var result = nodePath.posix.join(req, nodePath.posix.basename(req));
 
       // path.join function normalizes the path
@@ -24,7 +24,7 @@ export default function({t: types}) {
         result = './' + result;
       console.log(req, result);
 
-      path.node.arguments[0].value = result;
+      path.node.value = result;
     }
   };
   return {

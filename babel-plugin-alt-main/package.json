@@ -2,13 +2,19 @@
   "name": "babel-plugin-alt-main",
   "version": "0.0.0",
   "description": "Babel plugin for alternative main",
-  "main": "alt-main.js",
+  "main": "lib/alt-main.js",
   "scripts": {
+    "build": "babel *.js -d lib/",
+    "watch": "babel *.js -w -d lib/",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "babel-plugin"
   ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.5.1"
+  }
 }
