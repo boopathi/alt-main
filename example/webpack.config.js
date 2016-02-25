@@ -1,3 +1,4 @@
+var AltMainPlugin = require('../webpack-plugin');
 module.exports = {
   entry: './index.js',
   output: {
@@ -11,5 +12,8 @@ module.exports = {
         loader: 'babel'
       }
     ]
-  }
+  },
+  plugins: [
+    new AltMainPlugin()
+  ]
 };

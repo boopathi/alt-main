@@ -33,7 +33,7 @@ const denormPosixJoin = (...args) => {
   return result;
 }
 
-const canUseAltMain = (req, issuer, {moduleDirectories}) => {
+const canUseAltMain = (req, issuer, opts) => {
   const absReq = nodePath.join(nodePath.dirname(issuer), req);
 
   if (isModuleImport(req)) return false;

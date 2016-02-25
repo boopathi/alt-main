@@ -2,11 +2,18 @@
   "name": "alt-main-plugin",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
+    "build": "babel index.js -d lib",
+    "watch": "babel index.js -d lib -w",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-preset-es2015-node4": "^2.0.3"
+  }
 }
