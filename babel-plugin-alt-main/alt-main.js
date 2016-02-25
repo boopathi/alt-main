@@ -17,8 +17,15 @@ function isDir(path) {
   }
 }
 
+// we use posix because using windows style paths in require
+// makes it an escape character and not a path delimiter
 function denormPosixJoin(...args) {
-  let result = nodePath.join(...args);
+  let result = nodePath.posix.join(...args);
+
+  // path.join function normalizes the path
+  // As a result
+  // ./A is converted to A/A instead of ./A/A
+  // module require vs relative require
   if (args[0].indexOf('.') === 0 && args[0].indexOf('..') !== 0)
     result = './' + result;
   return result;
@@ -52,24 +59,13 @@ export default function({types: t}) {
   };
   const modVisitor = {
     StringLiteral(path) {
-      var req = path.node.value;
-      var issuer = this.file.opts.filename;
+      const req = path.node.value;
+      const issuer = this.file.opts.filename;
 
-      if (canUseAltMain(req, issuer)) {
-        // we use posix because using windows style paths in require
-        // makes it an escape character and not a path delimiter
-        var result = nodePath.posix.join(req, nodePath.posix.basename(req));
-
-        // path.join function normalizes the path
-        // As a result
-        // ./A is converted to A/A instead of ./A/A
-        // module require vs relative require
-        if (req.indexOf('.') === 0 && req.indexOf('..') !== 0)
-          result = './' + result;
-        console.log(req, result);
-
-        path.node.value = result;
-      }
+      // we use posix because using windows style paths in require
+      // makes it an escape character and not a path delimiter
+      if (canUseAltMain(req, issuer))
+        path.node.value = denormPosixJoin(req, nodePath.posix.basename(req));
     }
   };
   return {
