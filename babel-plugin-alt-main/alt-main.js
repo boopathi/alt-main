@@ -1,25 +1,27 @@
 import nodePath from 'path';
 import fs from 'fs';
 
-function isFile(path) {
+const isFile = path => {
   try {
     return fs.lstatSync(path).isFile();
   } catch(e) {
     return false;
   }
 }
-
-function isDir(path) {
+const isDir = path => {
   try {
-    return fs.lstatSync(path).isDirectory();
+    return fs.lstatSync(path).isDirectory()
   } catch(e) {
     return false;
   }
 }
+const isModuleImport = req => {
+  return req.indexOf('.') !== 0;
+}
 
 // we use posix because using windows style paths in require
 // makes it an escape character and not a path delimiter
-function denormPosixJoin(...args) {
+const denormPosixJoin = (...args) => {
   let result = nodePath.posix.join(...args);
 
   // path.join function normalizes the path
@@ -31,19 +33,20 @@ function denormPosixJoin(...args) {
   return result;
 }
 
-function canUseAltMain(req, issuer) {
+const canUseAltMain = (req, issuer, {moduleDirectories}) => {
+  const absReq = nodePath.join(nodePath.dirname(issuer), req);
 
-  const issuerDir = nodePath.dirname(issuer);
-  const absReq = nodePath.join(issuerDir, req);
+  if (isModuleImport(req)) return false;
 
   if (isFile(absReq)) return false;
-
   if (isDir(absReq)) {
     const packageJson = nodePath.join(absReq, 'package.json');
     const indexJs = nodePath.join(absReq, 'index.js');
-    if (isFile(packageJson)) {
-      let main = require(packageJson);
-      if (typeof main !== 'undefined') return false;
+
+    try {
+      if (typeof require(packageJson).main !== 'undefined') return false;
+    } catch(e) {
+      if (e.code !== 'MODULE_NOT_FOUND') throw e;
     }
     if (isFile(indexJs)) return false;
     return true;
@@ -52,23 +55,23 @@ function canUseAltMain(req, issuer) {
 
 export default function({types: t}) {
   const requireVisitor = {
-    CallExpression(path, plugin) {
+    CallExpression(path, state) {
       if (t.isIdentifier(path.node.callee, { name: 'require' }))
-        path.traverse(modVisitor, { file: plugin.file });
+        path.traverse(modVisitor, { file: state.file });
     }
   };
   const modVisitor = {
-    StringLiteral(path) {
+    StringLiteral(path, state) {
       const req = path.node.value;
       const issuer = this.file.opts.filename;
 
       // we use posix because using windows style paths in require
       // makes it an escape character and not a path delimiter
-      if (canUseAltMain(req, issuer))
+      if (canUseAltMain(req, issuer, state.opts))
         path.node.value = denormPosixJoin(req, nodePath.posix.basename(req));
     }
   };
   return {
     visitor: requireVisitor
   }
-};
+}
