@@ -1,4 +1,7 @@
 var B = require('../B');
+var C = require('../C');
+var D = require('../D');
+
 module.exports = function() {
-  return [B(), 'A'];
-}
+  return [D(), C(), B(), 'A'];
+};
