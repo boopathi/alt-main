@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-alt-main",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Babel plugin for alternative main",
   "main": "lib/alt-main.js",
   "keywords": [
