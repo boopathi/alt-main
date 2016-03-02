@@ -1,0 +1,11 @@
+{
+  "name": "babel-plugin-alt-main",
+  "version": "0.0.0",
+  "description": "Babel plugin for alternative main",
+  "main": "lib/alt-main.js",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "author": "Boopathi Rajaa <me@boopathi.in>",
+  "license": "MIT"
+}

@@ -1,6 +1,16 @@
 {
   "private": true,
+  "scripts": {
+    "build": "gulp build",
+    "watch": "gulp watch"
+  },
   "dependencies": {
-    "lerna": "^1.1.1"
+    "babel-cli": "^6.6.0",
+    "babel-preset-es2015-node4": "^2.0.3",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-watch": "^4.3.5",
+    "lerna": "^1.1.1",
+    "through2": "^2.0.1"
   }
 }
