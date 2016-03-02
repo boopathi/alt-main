@@ -11,10 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "alt-main-plugin": "../webpack-plugin",
+    "alt-main-plugin": "../src/webpack-plugin",
     "babel-core": "^6.5.2",
     "babel-loader": "^6.2.3",
-    "babel-plugin-alt-main": "../babel-plugin-alt-main",
+    "babel-plugin-alt-main": "../src/babel-plugin",
     "webpack": "^1.12.14"
   }
 }
