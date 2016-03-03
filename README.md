@@ -2,6 +2,8 @@
 
 Alternative main.
 
+### LOTS OF EXPERIMENTS. Ideas welcome.
+
 ## Why ?
 
 When developing React + webpack apps, it was a practice to structure our apps like this -
