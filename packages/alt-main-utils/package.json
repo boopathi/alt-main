@@ -1,6 +1,6 @@
 {
   "name": "alt-main-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Alt Main Utils",
   "main": "lib/index.js",
   "author": "Boopathi Rajaa <me@boopathi.in>",
