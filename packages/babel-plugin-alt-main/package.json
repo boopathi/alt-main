@@ -7,5 +7,8 @@
     "babel-plugin"
   ],
   "author": "Boopathi Rajaa <me@boopathi.in>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "alt-main-utils": "^0.0.1"
+  }
 }

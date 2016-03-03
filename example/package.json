@@ -1,16 +1,15 @@
 {
   "name": "example",
   "version": "1.0.0",
-  "description": "",
+  "private": true,
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
+    "alt-main-plugin": "../packages/alt-main-plugin",
+    "babel-plugin-alt-main": "../packages/babel-plugin-alt-main",
     "babel-core": "^6.5.2",
     "babel-loader": "^6.2.3",
     "webpack": "^1.12.14"

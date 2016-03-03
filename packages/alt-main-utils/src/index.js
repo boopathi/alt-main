@@ -35,11 +35,12 @@ export const denormPosixJoin = (...args) => {
   return result;
 };
 
-export const canUseAltMain = (req, issuer, opts) => {
-  const absReq = nodePath.join(nodePath.dirname(issuer), req);
+export const canUseAltMain = ({request, issuer, context}) => {
+  const absReq = typeof context === 'undefined' ?
+    nodePath.join(nodePath.dirname(issuer), request) :
+    nodePath.join(context, request);
 
-  if (isModuleImport(req)) return false;
-
+  if (isModuleImport(request)) return false;
   if (isFile(absReq)) return false;
   if (isDir(absReq)) {
     const packageJson = nodePath.join(absReq, 'package.json');
@@ -53,4 +54,5 @@ export const canUseAltMain = (req, issuer, opts) => {
     if (isFile(indexJs)) return false;
     return true;
   }
+  return false;
 }
