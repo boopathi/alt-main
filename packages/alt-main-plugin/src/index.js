@@ -1,33 +1,11 @@
 import nodePath from 'path';
-import fs from 'fs';
-
-const isFile = path => {
-  try {
-    return fs.lstatSync(path).isFile();
-  } catch(e) {
-    return false;
-  }
-}
-const isDir = path => {
-  try {
-    return fs.lstatSync(path).isDirectory();
-  } catch(e) {
-    return false;
-  }
-}
-// we use posix because using windows style paths in require
-// makes it an escape character and not a path delimiter
-const denormPosixJoin = (...args) => {
-  let result = nodePath.posix.join(...args);
-
-  // path.join function normalizes the path
-  // As a result
-  // ./A is converted to A/A instead of ./A/A
-  // module require vs relative require
-  if (args[0].indexOf('.') === 0 && args[0].indexOf('..') !== 0)
-    result = './' + result;
-  return result;
-}
+import {
+  isFile,
+  isDir,
+  denormPosixJoin,
+  isModuleImport,
+  canUseAltMain
+} from 'alt-main-utils';
 
 module.exports = AltMainPlugin;
 function AltMainPlugin() {}

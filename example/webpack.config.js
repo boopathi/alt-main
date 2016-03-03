@@ -1,4 +1,4 @@
-var AltMainPlugin = require('../webpack-plugin');
+var AltMainPlugin = require('alt-main-plugin');
 module.exports = {
   entry: './index.js',
   output: {

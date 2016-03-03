@@ -4,5 +4,8 @@
   "description": "",
   "main": "lib/index.js",
   "author": "Boopathi Rajaa <me@boopathi.in>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "alt-main-utils": "*"
+  }
 }
