@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './index.js',
+  entry: './babel-plugin.js',
   output: {
     path: './build',
     filename: 'bundle.js'
