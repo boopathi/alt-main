@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-alt-main",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Babel plugin for alternative main",
   "main": "lib/alt-main.js",
   "keywords": [
@@ -9,6 +9,6 @@
   "author": "Boopathi Rajaa <me@boopathi.in>",
   "license": "MIT",
   "dependencies": {
-    "alt-main-utils": "^0.0.2"
+    "alt-main-utils": "^0.0.3"
   }
 }
