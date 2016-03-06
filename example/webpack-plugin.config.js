@@ -1,17 +1,13 @@
 var AltMainPlugin = require('alt-main-plugin');
 module.exports = {
-  entry: './index.js',
+  entry: './webpack-plugin.js',
   output: {
     path: './build',
     filename: 'bundle.js'
   },
-  module: {
-    loaders: [
-      {
-        test: /\.js/,
-        loader: 'babel'
-      }
-    ]
+  resolve: {
+    modulesDirectories: ["web_modules", "node_modules"],
+    extensions: ["", ".js", ".web.js"]
   },
   plugins: [
     new AltMainPlugin()

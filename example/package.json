@@ -4,7 +4,8 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "webpack": "webpack --config webpack-plugin.config.js",
+    "babel": "webpack --config babel-plugin.config.js"
   },
   "license": "MIT",
   "dependencies": {

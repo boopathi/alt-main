@@ -17,14 +17,14 @@ export default function({types: t}) {
     }
   };
   const modVisitor = {
-    StringLiteral(path, state) {
-      const req = path.node.value;
+    StringLiteral(path) {
+      const request = path.node.value;
       const issuer = this.file.opts.filename;
 
       // we use posix because using windows style paths in require
       // makes it an escape character and not a path delimiter
-      if (canUseAltMain(req, issuer, state.opts))
-        path.node.value = denormPosixJoin(req, nodePath.posix.basename(req));
+      if (canUseAltMain({request, issuer}))
+        path.node.value = denormPosixJoin(request, nodePath.posix.basename(request));
     }
   };
   return {

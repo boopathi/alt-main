@@ -35,10 +35,20 @@ export const denormPosixJoin = (...args) => {
   return result;
 };
 
-export const canUseAltMain = ({request, issuer, context}) => {
-  const absReq = typeof context === 'undefined' ?
-    nodePath.join(nodePath.dirname(issuer), request) :
-    nodePath.join(context, request);
+export const canUseAltMain = ({path, request, issuer, context}) => {
+  let absReq;
+  if (typeof path !== 'undefined') {
+    absReq = path;
+    // convert module request to relative request
+    // with the context as dirname of path
+    request = './' + nodePath.posix.basename(absReq);
+  } else if (typeof context !== 'undefined') {
+    absReq = nodePath.join(context, request);
+  } else if (typeof issuer !== 'undefined') {
+    absReq = nodePath.join(nodePath.dirname(issuer), request);
+  } else {
+    throw new Error('Issuer, Context, Path - At least one should be defined');
+  }
 
   if (isModuleImport(request)) return false;
   if (isFile(absReq)) return false;
