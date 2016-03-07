@@ -16,44 +16,58 @@ MIT LICENSE - http://boopathi.mit-license.org
 
 ## Why ?
 
-When developing React + webpack apps, it was a practice to structure our apps like this -
+When developing apps, it became a practice to name the primary file in a directory to be the same name as that of the directory.
+
+It makes stack traces more interesting and the editor's fuzzy filename matching much more simple. This isn't a website and the `index.html -> index.js` is just weird sometimes.
 
 ```
-components/
-  One/
-    One.js
-    One.css
-  Two/
-    Two.js
-    Two.css
+project/
+  - a/
+    - a.js
+  - b/
+    - b.js
 ```
 
-and our requires came out like this,
+This is common pattern in many packages.
 
-```
-import One from './components/One/One.js'
-```
++ https://github.com/jashkenas/underscore/blob/master/package.json#L17
++ https://github.com/lodash/lodash/blob/master/package.json#L5
++ https://github.com/AmpersandJS/ampersand-collection/blob/master/package.json#L39
 
-and if we have `components` under module directories, it still looked long,
+And to solve this within a project, we had to include a `package.json` inside every directory and have a `main` field that's the same as the directory name.
 
-```
-import One from 'One/One';
-```
+So, this project aims to add a second fallback after `index.js` to resolve `./<name>` to `./<name>/<name>.js` by REPLACING the `require` statements during the `build` (transpile / bundle) step.
 
-There wasn't a way to set the default main of a directory to be the one with the same name as that of the directory. It is just enough to say,
+#### webpack
 
-```
-import One from 'One';
-```
+I'm considering React apps as an example here. When we bundle react components using webpack, our requires look like this -
 
-Having the default main's name the same as the directory name solves the fuzzy file matching in our IDEs where all the open files in our project will be named `index.js` and it's annoying to find that index.js you'd want to switch to.
-
-One way to solve this is to have a `package.json` with main field in every directory, but that's annoying too.
-
-This is a step to try to make it work by changing the default main - and making it as the second level fallback. So, if you do,
-
-```
-import One from 'One';
+```js
+import MyButton from '../components/MyButton/MyButton.js';
 ```
 
-The first try would be `package.json's main`. The default fallback is `index.js`. This project adds a second fallback `<Dir_Name.js>`.
+and with the `alt-main-plugin` webpack plugin, now we can do this
+
+```js
+import MyButton from '../components/MyButton';
+```
+
+and when you add `components` to `modulesDirectories` in webpack config,
+
+```js
+import MyButton from 'MyButton';
+```
+
+#### babel
+
+When transpiling, the `babel-plugin-alt-main` would replace the require statements to the right fallback and choose alternative main when it's available.
+
+```js
+const MyModule = require('./MyModule');
+```
+
+would be transpiled to
+
+```js
+const MyModule = require('./MyModule/MyModule.js');
+```
