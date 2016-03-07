@@ -6,9 +6,11 @@ Alternative main. Adds the second fallback to module resolution by replacing the
 2. `<name>/index.js`
 3. `<name>/<name>.js`
 
-## [webpack-plugin](packages/alt-main-plugin)
+This project provides the following plugins -
 
-## [babel-plugin](packages/babel-plugin-alt-main)
+### [webpack-plugin](packages/alt-main-plugin)
+
+### [babel-plugin](packages/babel-plugin-alt-main)
 
 ## LICENSE
 
