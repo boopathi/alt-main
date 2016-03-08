@@ -1,7 +1,5 @@
-var B = require('../B');
-var C = require('../C');
-var D = require('../D');
+import B from '../B';
+import C from '../C';
+import D from '../D';
 
-module.exports = function() {
-  return [D(), C(), B(), 'A'];
-};
+export default () => [D(), C(), B(), 'A']

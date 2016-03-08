@@ -1,3 +1,1 @@
-module.exports = function() {
-  return 'B';
-}
+export default () => 'B'
