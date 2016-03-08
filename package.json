@@ -6,13 +6,15 @@
     "watch": "gulp watch",
     "lerna": "lerna bootstrap"
   },
-  "dependencies": {
+  "devDependencies": {
     "babel-cli": "^6.6.0",
+    "babel-plugin-source-map-support-for-6": "0.0.4",
     "babel-preset-es2015-node4": "^2.0.3",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-watch": "^4.3.5",
     "lerna": "kittens/lerna",
+    "tape": "^4.5.1",
     "through2": "^2.0.1"
   }
 }
