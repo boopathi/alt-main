@@ -8,7 +8,6 @@ import {
 
 import nodePath from 'path';
 
-
 export default function({types: t}) {
   const requireVisitor = {
     CallExpression(path, state) {
