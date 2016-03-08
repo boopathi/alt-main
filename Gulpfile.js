@@ -2,14 +2,25 @@ const gulp = require('gulp');
 const babel = require('gulp-babel');
 const through2 = require('through2');
 const watch = require('gulp-watch');
+const rimraf = require('rimraf');
 
+// for compilation
 const source = './packages/*/src/**/*.js';
 const dest = 'packages';
-
 const srcEx = new RegExp("(packages/[^/]+)/src/");
 const libFragment = "$1/lib/";
 
+// for cleaning
+const libs = './packages/**/lib';
+const builds = './examples/**/build';
+
 gulp.task('default', ['build']);
+
+gulp.task('clean', function(cb) {
+  rimraf.sync(libs);
+  rimraf.sync(builds);
+  cb();
+});
 
 gulp.task('build', function() {
   return gulp.src('./packages/*/src/**/*.js')

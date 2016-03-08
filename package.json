@@ -3,6 +3,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gulp build",
+    "clean": "gulp clean",
     "watch": "gulp watch",
     "lerna": "lerna bootstrap"
   },
@@ -14,6 +15,7 @@
     "gulp-babel": "^6.1.2",
     "gulp-watch": "^4.3.5",
     "lerna": "kittens/lerna",
+    "rimraf": "^2.5.2",
     "tape": "^4.5.1",
     "through2": "^2.0.1"
   }
