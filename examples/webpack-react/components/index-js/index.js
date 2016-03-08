@@ -1,1 +1,1 @@
-export default () => <div>Index.js</div>
+export default () => "Index.js"

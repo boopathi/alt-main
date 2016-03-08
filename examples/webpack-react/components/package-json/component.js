@@ -1,1 +1,1 @@
-export default () => <div>Package.json</div>
+export default () => "Package.json";

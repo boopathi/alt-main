@@ -1,1 +1,1 @@
-export default () => <div>Alternative Main</div>
+export default () => "Alternative Main"
