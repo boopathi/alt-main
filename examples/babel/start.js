@@ -1,3 +1,4 @@
-import A from 'A';
+import A from './A';
 
-console.log(A);
+console.log(A());
+export default A();

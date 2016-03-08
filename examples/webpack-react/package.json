@@ -1,6 +1,5 @@
 {
   "private": true,
-  "main": "entry.js",
   "scripts": {
     "build": "webpack --config webpack.config.js"
   },
