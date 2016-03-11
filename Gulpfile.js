@@ -17,8 +17,8 @@ const builds = './examples/**/build';
 gulp.task('default', ['build']);
 
 gulp.task('clean', function(cb) {
-  rimraf.sync(libs);
-  rimraf.sync(builds);
+  rimraf.sync(libs, { glob: true });
+  rimraf.sync(builds, { glob: true });
   cb();
 });
 

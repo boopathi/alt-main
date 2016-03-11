@@ -2,10 +2,10 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "gulp build",
+    "build": "npm run clean && gulp build",
     "clean": "gulp clean",
-    "watch": "gulp watch",
-    "lerna": "lerna bootstrap"
+    "watch": "npm run clean && gulp watch",
+    "lerna-publish": "npm run clean && learn publish"
   },
   "devDependencies": {
     "babel-cli": "^6.6.0",
