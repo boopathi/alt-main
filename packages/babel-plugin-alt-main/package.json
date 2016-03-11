@@ -10,5 +10,9 @@
   "license": "MIT",
   "dependencies": {
     "alt-main-utils": "^0.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boopathi/alt-main/tree/master/packages/babel-plugin-alt-main"
   }
 }

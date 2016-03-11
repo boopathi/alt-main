@@ -4,5 +4,9 @@
   "description": "Alt Main Utils",
   "main": "lib/index.js",
   "author": "Boopathi Rajaa <me@boopathi.in>",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boopathi/alt-main/tree/master/packages/alt-main-utils"
+  }
 }
