@@ -1,12 +1,12 @@
 {
   "name": "alt-main-plugin",
-  "version": "0.0.4",
+  "version": "0.1.1",
   "description": "",
   "main": "lib/index.js",
   "author": "Boopathi Rajaa <me@boopathi.in>",
   "license": "MIT",
   "dependencies": {
-    "alt-main-utils": "^0.0.3"
+    "alt-main-utils": "^0.1.1"
   },
   "repository": {
     "type": "git",
