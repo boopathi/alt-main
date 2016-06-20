@@ -16,7 +16,7 @@
     "gulp-watch": "^4.3.7",
     "lerna": "kittens/lerna",
     "rimraf": "^2.5.2",
-    "tape": "^4.5.1",
+    "tape": "^4.6.0",
     "through2": "^2.0.1"
   }
 }
