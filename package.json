@@ -8,7 +8,7 @@
     "lerna-publish": "npm run clean && learn publish"
   },
   "devDependencies": {
-    "babel-cli": "^6.11.4",
+    "babel-cli": "^6.14.0",
     "babel-plugin-source-map-support-for-6": "0.0.5",
     "babel-preset-es2015-node4": "^2.0.3",
     "gulp": "^3.9.1",
