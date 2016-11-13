@@ -14,7 +14,7 @@ This project provides the following plugins -
 
 ## LICENSE
 
-MIT LICENSE - http://boopathi.mit-license.org
+MIT LICENSE - https://boopathi.mit-license.org/2016
 
 ## Why ?
 
