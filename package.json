@@ -10,7 +10,7 @@
   "devDependencies": {
     "babel-cli": "^6.22.2",
     "babel-plugin-source-map-support-for-6": "0.0.5",
-    "babel-preset-es2015-node4": "^2.0.3",
+    "babel-preset-es2015-node4": "^2.1.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-watch": "^4.3.11",
