@@ -17,6 +17,6 @@
     "lerna": "kittens/lerna",
     "rimraf": "^2.6.0",
     "tape": "^4.6.2",
-    "through2": "^2.0.1"
+    "through2": "^2.0.2"
   }
 }
