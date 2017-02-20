@@ -1,5 +1,7 @@
 # alt-main
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/boopathi/alt-main.svg)](https://greenkeeper.io/)
+
 Alternative main. Adds the second fallback to module resolution by replacing the require statements for directory requires.
 
 1. `<name>/package.json->main`
